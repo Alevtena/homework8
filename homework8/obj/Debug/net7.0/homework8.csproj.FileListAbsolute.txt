@@ -1,0 +1,15 @@
+/Users/alevtinabarinova/Desktop/homework08/homework8/bin/Debug/net7.0/homework8
+/Users/alevtinabarinova/Desktop/homework08/homework8/bin/Debug/net7.0/homework8.deps.json
+/Users/alevtinabarinova/Desktop/homework08/homework8/bin/Debug/net7.0/homework8.runtimeconfig.json
+/Users/alevtinabarinova/Desktop/homework08/homework8/bin/Debug/net7.0/homework8.dll
+/Users/alevtinabarinova/Desktop/homework08/homework8/bin/Debug/net7.0/homework8.pdb
+/Users/alevtinabarinova/Desktop/homework08/homework8/obj/Debug/net7.0/homework8.csproj.AssemblyReference.cache
+/Users/alevtinabarinova/Desktop/homework08/homework8/obj/Debug/net7.0/homework8.GeneratedMSBuildEditorConfig.editorconfig
+/Users/alevtinabarinova/Desktop/homework08/homework8/obj/Debug/net7.0/homework8.AssemblyInfoInputs.cache
+/Users/alevtinabarinova/Desktop/homework08/homework8/obj/Debug/net7.0/homework8.AssemblyInfo.cs
+/Users/alevtinabarinova/Desktop/homework08/homework8/obj/Debug/net7.0/homework8.csproj.CoreCompileInputs.cache
+/Users/alevtinabarinova/Desktop/homework08/homework8/obj/Debug/net7.0/homework8.dll
+/Users/alevtinabarinova/Desktop/homework08/homework8/obj/Debug/net7.0/refint/homework8.dll
+/Users/alevtinabarinova/Desktop/homework08/homework8/obj/Debug/net7.0/homework8.pdb
+/Users/alevtinabarinova/Desktop/homework08/homework8/obj/Debug/net7.0/homework8.genruntimeconfig.cache
+/Users/alevtinabarinova/Desktop/homework08/homework8/obj/Debug/net7.0/ref/homework8.dll
