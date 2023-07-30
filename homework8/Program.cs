@@ -63,10 +63,9 @@ int[,] Create2DArray(int row, int colom)
     int[,] array=new int [row, colom];
     for( int i=0; i<row; i++)
         for (int j=0; j < colom; j++)
-            array[i,j] = new Random().Next(-10,10);
+            array[i,j] = new Random().Next(0,10);
     return array;
 }
-
 void Show2dArray (int[,] array)
 {
     for(int i=0; i<array.GetLength(0); i++)
@@ -76,25 +75,40 @@ void Show2dArray (int[,] array)
         Console.WriteLine();
     }
 }
-
-int FindeRowMinSum(int[,] array)
+void ShowArray (int[] newarray) // выводит одномерный массив с суммами по строкам
 {
-    int minSum = 0;
-    int rowIndex = -1;
-    for (int i = 0; i < array.GetLength(0); i++)
+    for(int i=0; i < newarray.Length; i++)
     {
-        int sum = 0;
-        for (int j = 0; j < array.GetLength(1); j++)
+        Console.Write(newarray[i] + ", " );
+    }
+}
+int[] RowsSum(int[,] array, int row, int colum) // считает сумму в массиве по строчкам и записывает одномерный массив изэтих сумм
+{
+    int[] newarray  = new int [row];
+    for (int i=0; i<row; i++)
+    {
+        int sumrow = 0; 
+        for (int j=0; j < colum; j++)
         {
-            sum += array[i, j];
-        }
-        if (sum < minSum)
-        {
-            minSum = sum;
-            rowIndex = i;
+        sumrow += array[i,j];
+        newarray[i] = sumrow;
         }
     }
-    return rowIndex;
+    return newarray;
+}
+int FindeIndex (int[] newarray) // находит номер строки с минимальной суммой
+{
+    int min = newarray[0];
+    int index = 0;
+    for (int i = 1; i < newarray.Length; i++)
+    {
+        if (newarray[i] < min)
+        {
+            min = newarray[i];
+            index = i;
+        }
+    }
+    return (index +1);
 }
 Console.Write(" Input a rows of array" + " ");
 int row = Convert.ToInt32(Console.ReadLine());
@@ -103,4 +117,8 @@ int colum = Convert.ToInt32(Console.ReadLine());
 
 int[,] myarray = Create2DArray(row, colum);
 Show2dArray(myarray);
-Console.Write($"Номер строки в массиве с минимальной суммой элементов {FindeRowMinSum(myarray)}");
+int [] newarray = RowsSum(myarray, row, colum);
+Console.WriteLine("Сумма элементов в каждой строке массива");
+ShowArray(newarray);
+Console.WriteLine();
+Console.Write($"Номер строки в массиве с минимальной суммой элементов {FindeIndex(newarray)}");
