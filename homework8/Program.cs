@@ -131,7 +131,7 @@ Console.Write($"Номер строки в массиве с минимальн�
 18 20
 15 18 */
 
-int[,] Create2dArray (int row, int colum)
+/* int[,] Create2dArray (int row, int colum)
 {
     int [,] array = new int[row, colum];
     for (int i=0; i<row; i++)
@@ -193,3 +193,162 @@ if (temp==true)
     Show2dArray(resultarray);
 }
 else Console.WriteLine("Умножение невозможно. Количество столбцов первой матрицы должно быть равно количеству строк второй матрицы");
+*/
+/* Task 4. Сформируйте трёхмерный массив из неповторяющихся двузначных чисел. Напишите программу, которая будет построчно выводить массив, добавляя индексы каждого элемента.
+Массив размером 2 x 2 x 2
+66(0,0,0) 25(0,1,0)
+34(1,0,0) 41(1,1,0)
+27(0,0,1) 90(0,1,1)
+26(1,0,1) 55(1,1,1) */
+
+ 
+/* int[, ,] Create3dArray(int row, int colum, int h, int minvalue, int maxvalue)
+{
+    int[, , ] array = new int[row,colum,h];
+    for (int i=0; i<row; i++)
+    {
+        for (int j=0; j<colum; j++)
+        {
+            for (int k=0; k<h; k++)
+            {
+                if (NumberRepeated(array, array[i,j,k], row, colum, h)==true)
+                { 
+                    Console.Write($"Введите элемент массива в виде двузначного числа {i}, {j},{k}: ");
+                    array[i,j,k] = Convert.ToInt32(Console.ReadLine());
+                }
+                else 
+                {
+                    Console.WriteLine("Число уже было введено. Введите другое число:");
+                    Console.Write($"Введите элемент массива в виде двузначного числа {i}, {j},{k}: ");
+                    array[i,j,k] = Convert.ToInt32(Console.ReadLine());
+                } 
+            }
+        }
+
+    }
+    return array;
+
+}*/
+
+/*void Show3DArray(int[,,] array)
+{
+    for (int i = 0; i < array.GetLength(0); i++)
+    {
+        for (int j = 0; j < array.GetLength(1); j++)
+        {
+            for (int k = 0; k < array.GetLength(2); k++)
+                Console.Write($"{array[i, j, k]} [{i},{j},{k}]   ");
+            Console.WriteLine();
+        }
+    }
+}
+
+Console.Write(" Input a rows of array" + " ");
+int row = Convert.ToInt32(Console.ReadLine());
+Console.Write(" Input a colums of array" + " ");
+int colum = Convert.ToInt32(Console.ReadLine());
+Console.Write(" Input a h of array" + " ");
+int h = Convert.ToInt32(Console.ReadLine());
+
+Console.Write(" Input a minvalue of array" + " ");
+int minvalue = Convert.ToInt32(Console.ReadLine());
+Console.Write(" Input a maxvalue of array" + " ");
+int maxvalue = Convert.ToInt32(Console.ReadLine());
+
+
+int[,,] CheckAndInputNumber(int row, int colum, int h, int minvalue, int maxvalue); 
+// массив для сохранения уже введенных чисел)
+{
+    int[] inputNumbers = new int[row*colum*h];
+    int[,,] array = new int[row,colum,h];
+
+    for (int i = 0; i < row; i++)
+    {
+        for (int j = 0; j < colum; j++)
+        {
+            for (int k = 0; k < h; k++)
+            {
+                Console.Write($"Введите число для индексов [{i},{j},{k}]: ");
+                int num = Convert.ToInt32(Console.ReadLine());
+                if (inputNumbers[i] == num) //проверка
+                {
+                    Console.WriteLine("Это число уже было введено, попробуйте еще раз.");
+                    k--; 
+                }
+                else
+                {
+                    inputNumbers[i * colum * h + j * h + k] = num; // Сохраняем введенное число в массиве
+                    array[i, j, k] = num; // Присваиваем число элементу массива
+                }
+            }
+        }
+    }
+    return array;
+}
+    
+
+int[,,] myArray = CheckAndInputNumber(row,colum,h,minvalue,maxvalue); 
+Show3DArray(myArray);*/
+
+// Task 5. Напишите программу, которая заполнит спирально массив 4 на 4. 
+/* Например, на выходе получается вот такой массив:
+01 02 03 04
+12 13 14 05
+11 16 15 06
+10 09 08 07 */
+
+int[,] CreateArray(int row =4, int colum=4)
+{
+    int[,] array = new int[row, colum];
+
+    int value = 1;              
+    int minRow = 0;
+    int maxRow = 3;
+    int minCol = 0;
+    int maxCol = 3;
+
+    while (value <= 16)
+    {
+        for (int i = minCol; i <= maxCol; i++) //вправо
+        {
+            array[minRow, i] = value;
+            value++;
+        }
+        minRow++;
+        for (int i = minRow; i <= maxRow; i++) //вниз
+        {
+            array[i, maxCol] = value;
+            value++;
+        }
+        maxCol--;
+        for (int i = maxCol; i >= minCol; i--) //влево
+        {
+            array[maxRow, i] = value;
+            value++;
+        }
+        maxRow--;
+        for (int i = maxRow; i >= minRow; i--) //вверх
+        {
+            array[i, minCol] = value;
+            value++;
+        }
+        minCol++;
+    }
+    return array;
+}
+
+void Show2dArray (int[,] array)
+{
+    for (int i=0; i<array.GetLength(0); i++)
+    {
+        for (int j=0; j<array.GetLength(1); j++)
+        {
+            if (array[i,j]<10) Console.Write($"0{array[i,j]} ");
+            else Console.Write(array[i,j] + " ");
+        }
+        
+        Console.WriteLine();
+    }
+}
+int [,] myarray = CreateArray(4,4);
+Show2dArray(myarray);
