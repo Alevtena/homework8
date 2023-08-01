@@ -199,38 +199,32 @@ else Console.WriteLine("Умножение невозможно. Количес�
 66(0,0,0) 25(0,1,0)
 34(1,0,0) 41(1,1,0)
 27(0,0,1) 90(0,1,1)
-26(1,0,1) 55(1,1,1) */
+26(1,0,1) 55(1,1,1) 
 
- 
-/* int[, ,] Create3dArray(int row, int colum, int h, int minvalue, int maxvalue)
+массив трехмерный сформирован, выводитмся на экран. Однако нет проверки повторяющихся чисел. (не знаю как !!!)
+*/
+
+ int[, ,] Create3dArray(int row, int colum, int h, int minvalue, int maxvalue)
 {
     int[, , ] array = new int[row,colum,h];
-    for (int i=0; i<row; i++)
+    int[] numarray = new int[row*colum*h];
+    for (int i=0, m=0; i<row; i++, m++)
     {
         for (int j=0; j<colum; j++)
         {
             for (int k=0; k<h; k++)
             {
-                if (NumberRepeated(array, array[i,j,k], row, colum, h)==true)
-                { 
-                    Console.Write($"Введите элемент массива в виде двузначного числа {i}, {j},{k}: ");
-                    array[i,j,k] = Convert.ToInt32(Console.ReadLine());
-                }
-                else 
-                {
-                    Console.WriteLine("Число уже было введено. Введите другое число:");
-                    Console.Write($"Введите элемент массива в виде двузначного числа {i}, {j},{k}: ");
-                    array[i,j,k] = Convert.ToInt32(Console.ReadLine());
-                } 
+                Console.Write($"Введите  элемент массива в виде двузначного числа {i}, {j},{k}: ");
+                array[i,j,k] = Convert.ToInt32(Console.ReadLine());
+                numarray[m]=array[i,j,k];
             }
         }
-
+        
     }
     return array;
+}
 
-}*/
-
-/*void Show3DArray(int[,,] array)
+void Show3DArray(int[,,] array)
 {
     for (int i = 0; i < array.GetLength(0); i++)
     {
@@ -254,41 +248,9 @@ Console.Write(" Input a minvalue of array" + " ");
 int minvalue = Convert.ToInt32(Console.ReadLine());
 Console.Write(" Input a maxvalue of array" + " ");
 int maxvalue = Convert.ToInt32(Console.ReadLine());
+int[,,] myarray = Create3dArray(row,colum,h,minvalue,maxvalue);
+Show3DArray(myarray);
 
-
-int[,,] CheckAndInputNumber(int row, int colum, int h, int minvalue, int maxvalue); 
-// массив для сохранения уже введенных чисел)
-{
-    int[] inputNumbers = new int[row*colum*h];
-    int[,,] array = new int[row,colum,h];
-
-    for (int i = 0; i < row; i++)
-    {
-        for (int j = 0; j < colum; j++)
-        {
-            for (int k = 0; k < h; k++)
-            {
-                Console.Write($"Введите число для индексов [{i},{j},{k}]: ");
-                int num = Convert.ToInt32(Console.ReadLine());
-                if (inputNumbers[i] == num) //проверка
-                {
-                    Console.WriteLine("Это число уже было введено, попробуйте еще раз.");
-                    k--; 
-                }
-                else
-                {
-                    inputNumbers[i * colum * h + j * h + k] = num; // Сохраняем введенное число в массиве
-                    array[i, j, k] = num; // Присваиваем число элементу массива
-                }
-            }
-        }
-    }
-    return array;
-}
-    
-
-int[,,] myArray = CheckAndInputNumber(row,colum,h,minvalue,maxvalue); 
-Show3DArray(myArray);*/
 
 // Task 5. Напишите программу, которая заполнит спирально массив 4 на 4. 
 /* Например, на выходе получается вот такой массив:
@@ -297,7 +259,7 @@ Show3DArray(myArray);*/
 11 16 15 06
 10 09 08 07 */
 
-int[,] CreateArray(int row =4, int colum=4)
+/* int[,] CreateArray(int row =4, int colum=4)
 {
     int[,] array = new int[row, colum];
 
@@ -351,4 +313,4 @@ void Show2dArray (int[,] array)
     }
 }
 int [,] myarray = CreateArray(4,4);
-Show2dArray(myarray);
+Show2dArray(myarray); */
